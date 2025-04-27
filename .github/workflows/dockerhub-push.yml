@@ -3,7 +3,7 @@ name: Build and Push Docker Image to Docker Hub (Production)
 on:
   push:
     branches:
-      - prod   # ONLY trigger when changes reach prod branch
+      - stg   # ONLY trigger when changes reach prod branch
 
 jobs:
   build-and-push:
@@ -26,4 +26,4 @@ jobs:
     - name: Push Docker image
       run: |
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/automated-triage-app:latest
-        
+
