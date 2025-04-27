@@ -1,2 +1,5 @@
+fastapi
+uvicorn
+mangum
 requests
-flask
+pydantic
