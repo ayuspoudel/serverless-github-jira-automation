@@ -3,7 +3,7 @@ name: Build and Push Docker Image to ECR (Production)
 on:
   push:
     branches:
-      - stg   # ONLY trigger when changes reach prod branch
+      - master   # ONLY trigger when changes reach prod branch
 
 jobs:
   build-and-push:
