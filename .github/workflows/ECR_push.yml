@@ -3,7 +3,7 @@ name: Build and Push Docker Image to ECR (Production)
 on:
   push:
     branches:
-      - stg   # ONLY trigger when changes reach prod branch
+      - master  # ONLY trigger when changes reach prod branch
 
 jobs:
   build-and-push:
@@ -17,11 +17,12 @@ jobs:
       run: |
         aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws configure set region "us-east-1"  # Specify your AWS region here
+        aws configure set region "us-east-1"  # Set your AWS region here
 
     - name: Log in to AWS ECR
-      run: |
-        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
+      uses: aws-actions/amazon-ecr-login@v1
+      with:
+        region: "us-east-1"  # Specify the region for ECR login
 
     - name: Build Docker image
       run: |
