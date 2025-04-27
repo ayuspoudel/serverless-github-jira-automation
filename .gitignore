@@ -1,1 +1,4 @@
-api_token.txt
+auth.txt
+__pycache__
+path
+venv
