@@ -33,9 +33,9 @@ def create_ticket(request: TicketRequest):
 # For AWS Lambda Deployment
 handler = Mangum(app)
 
-aws lambda invoke --function-name automated-triage-function  --payload '{
-    "project_key": "INFRAOPS",
-    "summary": "Test Issue",
-    "description": "Description of the test issue",
-    "issue_type": "Bug"
-  }'
+# aws lambda invoke --function-name automated-triage-function  --payload '{
+#     "project_key": "INFRAOPS",
+#     "summary": "Test Issue",
+#     "description": "Description of the test issue",
+#     "issue_type": "Bug"
+#   }'
