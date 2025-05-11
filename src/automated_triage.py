@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from create_ticket import create_jira_ticket
-# from mangum import Mangum  # only needed for Lambda compatibility
+from mangum import Mangum  # only needed for Lambda compatibility
 
 app = FastAPI()
 
@@ -33,4 +33,9 @@ def create_ticket(request: TicketRequest):
 # For AWS Lambda Deployment
 handler = Mangum(app)
 
-
+# aws lambda invoke --function-name automated-triage-function  --payload '{
+#     "project_key": "INFRAOPS",
+#     "summary": "Test Issue",
+#     "description": "Description of the test issue",
+#     "issue_type": "Bug"
+#   }'
